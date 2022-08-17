@@ -17,10 +17,11 @@ def binary_search(l, target, low=None, high=None):
 
     if high < low:
         return -1
-
-    # example l = [1, 3, 5, 10, 12]  # should return 3
-    midpoint = (low + high) // 2  # 2
-
+   
+    # l = [1, 3, 5, 10, 12]  # should return 3
+    
+    midpoint = (low + high)  // 2  # 2
+    
     if l[midpoint] == target:
         return midpoint
     elif target < l[midpoint]:
@@ -28,10 +29,9 @@ def binary_search(l, target, low=None, high=None):
     else:
         # target > l[midpoint]
         return binary_search(l, target, midpoint+1, high)
-
+        
 if __name__=='__main__':
-   
-
+    
     length = 10000
     # build a sorted list of length 10000
     sorted_list = set()
@@ -50,3 +50,27 @@ if __name__=='__main__':
         binary_search(sorted_list, target)
     end = time.time()
     print("Binary search time: ", (end - start), "seconds")
+
+
+
+
+def bubbleSort (array):
+    # first step is looping over the array and comparing each element with the next one.
+
+    for i in range(len(array)):
+       
+        swapped = False
+        for  j in range(0, len(array)-i-1):
+          
+            if array[j] > array[j+1]:
+                temp = array[j]
+                array[j] = array[j+1]
+                array[j+1] = temp
+                swapped = True
+        if not swapped:
+            break
+
+data = [9,5,7,4,45,4,74]
+bubbleSort(data)
+print(data)
+       
