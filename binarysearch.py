@@ -57,10 +57,12 @@ if __name__=='__main__':
 def bubbleSort (array):
     # first step is looping over the array and comparing each element with the next one.
 
-    for i in range(len(array)):
+    for i in range(len(array)): 
+        
        
         swapped = False
         for  j in range(0, len(array)-i-1):
+           
           
             if array[j] > array[j+1]:
                 temp = array[j]
@@ -70,7 +72,66 @@ def bubbleSort (array):
         if not swapped:
             break
 
-data = [9,5,7,4,45,4,74]
+
+
+def mergeSort(arr):
+    if len(arr) > 1:
+ 
+         # Finding the mid of the array
+        mid = len(arr)//2
+ 
+        # Dividing the array elements
+        L = arr[:mid]
+ 
+        # into 2 halves
+        R = arr[mid:]
+ 
+        # Sorting the first half
+        mergeSort(L)
+ 
+        # Sorting the second half
+        mergeSort(R)
+ 
+        i = j = k = 0
+ 
+        # Copy data to temp arrays L[] and R[]
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+ 
+        # Checking if any element was left
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+ 
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+ 
+# Code to print the list
+data = [1,0,5,9,8]
 bubbleSort(data)
 print(data)
-       
+ 
+def printList(arr):
+    for i in range(len(arr)):
+        print(arr[i], end=" ")
+    print()
+ 
+ 
+# Driver Code
+if __name__ == '__main__':
+    arr = [12, 11, 13, 5, 6, 7]
+    print("Given array is", end="\n")
+    printList(arr)
+    mergeSort(arr)
+    print("Sorted array is: ", end="\n")
+    printList(arr)
+
